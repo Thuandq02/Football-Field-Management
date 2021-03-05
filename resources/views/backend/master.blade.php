@@ -73,6 +73,12 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <li>
                         <a href="{{ route('pitche.create') }}"><i class="fa fa-cogs nav_icon"></i>Create Pitch</a>
                     <li>
+                    <li>
+                        <a href="{{ route('order.list') }}"><i class="fa fa-table nav_icon"></i>List Order</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('order.create') }}"><i class="fa fa-cogs nav_icon"></i>Create Order</a>
+                    <li>
                 </ul>
                 <!-- //sidebar-collapse -->
             </nav>
@@ -102,7 +108,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <li class="dropdown profile_details_drop">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <div class="profile_img">
-                                <span class="prfil-img"><img src="backend/images/1.png" alt=""> </span>
+                                <span class="prfil-img"><img src="{{ asset('backend/images/1.png') }}" alt=""> </span>
                                 <div class="user-name">
                                     <p>Wikolia</p>
                                     <span>Administrator</span>

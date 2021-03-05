@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use App\Models\Order;
+use App\Models\Pitch;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,7 +16,10 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::paginate(5);
+        $customers = Customer::all();
+        $pitches = Pitch::all();
+        return view('backend.order.list', compact('orders','customers','pitches'));
     }
 
     /**
@@ -24,7 +29,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::all();
+        $pitches = Pitch::all();
+        return view('backend.order.create',compact('customers','pitches'));
     }
 
     /**
@@ -35,7 +42,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new Order();
+        $order->fill($request->all());
+        $order->save();
+        return redirect()->route('order.list');
     }
 
     /**
@@ -55,9 +65,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $customers = Customer::all();
+        $pitches = Pitch::all();
+        return view('backend.order.edit', compact('order','customers','pitches'));
     }
 
     /**
@@ -67,9 +80,12 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, $id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order->fill($request->all());
+        $order->save();
+        return redirect()->route('order.list');
     }
 
     /**
@@ -78,8 +94,16 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        $order->delete();
+        return redirect()->route('order.list');
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+        $orders = Order::where('price', 'LIKE', "%$search%")->paginate(100);
+        return view('backend.order.list', compact(['orders']));
     }
 }

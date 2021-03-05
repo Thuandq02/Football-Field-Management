@@ -39,4 +39,13 @@ Route::prefix('/admin')->group(function (){
         Route::get('/delete/{id}',[PitchController::class, 'destroy'])->name('pitche.delete');
         Route::post('/search',[PitchController::class, 'search'])->name('pitche.search');
     });
+    Route::prefix('/order')->group(function (){
+        Route::get('/',[OrderController::class, 'index'])->name('order.list');
+        Route::get('/create',[OrderController::class, 'create'])->name('order.create');
+        Route::post('/create',[OrderController::class, 'store'])->name('order.store');
+        Route::get('/edit/{id}',[OrderController::class, 'edit'])->name('order.edit');
+        Route::post('/update/{id}',[OrderController::class, 'update'])->name('order.update');
+        Route::get('/delete/{id}',[OrderController::class, 'destroy'])->name('order.delete');
+        Route::post('/search',[OrderController::class, 'search'])->name('order.search');
+    });
 });

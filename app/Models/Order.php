@@ -15,4 +15,12 @@ class Order extends Model
         'end_time',
         'price'
     ];
+
+    public function customers(){
+        return $this->belongsTo(Customer::class,'customer_id');
+    }
+
+    public function pitches(){
+        return $this->belongsTo(Pitch::class, 'pitche_id');
+    }
 }

@@ -14,4 +14,8 @@ class Pitch extends Model
         'address',
         'image'
     ];
+
+    public function orders(){
+        return $this->hasMany(Order::class, 'pitche_id');
+    }
 }

@@ -39,26 +39,26 @@ class PitchController extends Controller
      */
     public function store(FormPitche $request,Pitch $pitche)
     {
-//        $pitche = new Pitch();
-//        $pitche->fill($request->all());
-//        $pitche->save();
-//        return redirect()->route('pitche.list');
-        if ($request->hasFile('image')) {
-            try {
-                $imageName = time() . '.' . $request->image->getClientOriginalExtension();
-                $request->image->move(public_path('images'), $imageName);
-            } catch (Exception $e) {
-                if (file_exists(public_path('images') . "/" . $imageName)) {
-                    unlink(public_path('images') . "/" . $imageName);
-                }
-                return back()->with('error', 'Your must upload image file.');
-            }
-            $pitche->fill($request->all());
-            $pitche->image = $imageName;
-            $pitche->save();
-            return redirect()->route('pitche.list');
-        }
-        return back()->with('error', 'You must select image file to upload.');
+        $pitche = new Pitch();
+        $pitche->fill($request->all());
+        $pitche->save();
+        return redirect()->route('pitche.list');
+//        if ($request->hasFile('image')) {
+//            try {
+//                $image = time() . '.' . $request->image->getClientOriginalExtension();
+//                $request->image->move(public_path('images'), $image);
+//            } catch (Exception $e) {
+//                if (file_exists(public_path('images') . "/" . $image)) {
+//                    unlink(public_path('images') . "/" . $image);
+//                }
+//                return back()->with('error', 'Your must upload image file.');
+//            }
+//            $pitche->fill($request->all());
+//            $pitche->image = $image;
+//            $pitche->save();
+//            return redirect()->route('pitche.list');
+//        }
+//        return back()->with('error', 'You must select image file to upload.');
     }
 
     /**
