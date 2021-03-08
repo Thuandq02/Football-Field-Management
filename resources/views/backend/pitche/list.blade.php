@@ -41,9 +41,9 @@
                                         <th scope="row">{{ $key + $pitches->firstItem() }}</th>
                                         <td>{{ $pitche->name }}</td>
                                         <td>{{ $pitche->type }}</td>
-                                        <td>{{ $pitche->address }}</td>
+                                        <td style="width: 300px">{{ $pitche->address }}</td>
                                         <td>
-                                            <img class="img-thumbnail img-fluid" style="display: block !important; max-width: 25% !important; height: auto !important" src="{{ asset('images/'.$pitche->image) }}" alt="">
+                                            <img class="img-thumbnail img-fluid" style="display: block !important; max-width: 250px !important; height: auto !important" src="{{ asset('images/'.$pitche->image) }}" alt="">
                                         </td>
                                         <td>
                                             <a href="{{ route('pitche.edit', $pitche->id) }}" class="btn btn-success">sửa</a>

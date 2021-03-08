@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="main-page">
             <h3 class="title1">Edit Pitche</h3>
-            <form method="post" action="{{ route('pitche.update', $pitche->id) }}">
+            <form method="post" action="{{ route('pitche.update', $pitche->id) }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Name</label>
@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label>Type Pitche</label>
                     <select name="type" class="form-control">
-                        <option>Sân cũ {{ $pitche->type }}</option>
+                        <option>{{ $pitche->type }}</option>
                         <option>Sân 5</option>
                         <option>Sân 7</option>
                         <option>Sân 11</option>
@@ -32,13 +32,16 @@
                 </div>
                 <div class="form-group">
                     <label>Image</label>
-                    <input type="text" class="form-control" name="image" value="{{ $pitche->image }}">
-                    @if($errors->any())
+                    <input type="file" class="form-control" name="image" value="{{ asset('images/'.$pitche->image) }}">
+                    <input type="hidden" name="imgName" class="form-control" value="{{ $pitche->image }}">
+                    <img class="img-thumbnail img-fluid" style="max-width: 250px !important; height: auto !important" src="{{ asset('images/'.$pitche->image) }} " alt="">
+
+                @if($errors->any())
                         <p class="alert-danger my-sm-4">{{ $errors->first('image') }}</p>
                     @endif
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
-                {{--                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy</button>--}}
+                <button class="btn btn-secondary" onclick="window.history.go(-1); return false;">Hủy</button>
             </form>
         </div>
     </div>

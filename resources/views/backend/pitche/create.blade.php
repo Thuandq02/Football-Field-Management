@@ -5,7 +5,7 @@
     <div id="page-wrapper">
         <div class="main-page">
             <h3 class="title1">Creste Pitche</h3>
-            <form method="post" action="{{ route('pitche.store') }}">
+            <form method="post" action="{{ route('pitche.store') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <label>Name</label>
