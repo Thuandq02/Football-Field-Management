@@ -17,10 +17,16 @@
                         <div>
                             <label>Email</label>
                             <input type="text" class="user" name="email" placeholder="Enter your email">
+                            @if($errors->any())
+                                <p class="alert-danger my-sm-4">{{ $errors->first('email') }}</p>
+                            @endif
                         </div>
                         <div>
                             <label>Password</label>
                             <input type="password" name="password" class="lock" placeholder="password">
+                            @if($errors->any())
+                                <p class="alert-danger my-sm-4">{{ $errors->first('password') }}</p>
+                            @endif
                         </div>
                         <input type="submit" name="Sign In" value="Sign In">
                         @if(\Illuminate\Support\Facades\Session::has('error'))

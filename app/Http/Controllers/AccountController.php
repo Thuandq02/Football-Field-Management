@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormLogin;
+use App\Http\Requests\FormRegister;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +19,7 @@ class AccountController extends Controller
         return view('backend.account.login');
     }
 
-    public function login(Request $request){
+    public function login(FormLogin $request){
         $auth = [
             'email' => $request->email,
             'password' => $request->password
@@ -42,7 +44,7 @@ class AccountController extends Controller
         return view('backend.account.register');
     }
 
-    public function register(Request $request){
+    public function register(FormRegister $request){
         $user = new User();
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
