@@ -3,7 +3,7 @@
 @section('content')
     <div id="page-wrapper">
         <div class="main-page">
-            <h3 class="title1">Calender</h3>
+            <h3 class="title1" align="center">Calender</h3>
             <div class="row calender widget-shadow">
                 <div class="cal1">
                 </div>

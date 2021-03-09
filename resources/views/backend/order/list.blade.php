@@ -46,7 +46,7 @@
                                         <td>{{ $order->pitches->type }}</td>
                                         <td>{{ $order->starting_time }}</td>
                                         <td>{{ $order->end_time }}</td>
-                                        <td>{{ $order->price }} VND</td>
+                                        <td>{{ number_format($order->price) }} VND</td>
                                         <td>
                                             <a href="{{ route('order.edit', $order->id) }}" class="btn btn-success">sửa</a>
                                             <a href="{{ route('order.delete', $order->id) }}" class="btn btn-danger" onclick="return confirm('Bạn chắc chắn muốn xóa?')">xóa</a>
