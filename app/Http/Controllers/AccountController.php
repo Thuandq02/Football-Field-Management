@@ -49,6 +49,6 @@ class AccountController extends Controller
         $user->fill($request->all());
         $user->password = Hash::make($request->password);
         $user->save();
-        return redirect()->route('register.index');
+        return redirect()->route('login.index');
     }
 }
